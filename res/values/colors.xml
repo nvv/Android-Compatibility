@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="actionbar_title_color">#224894</color>
+    <color name="actionbar_tab_selection_color">#ff337494</color>
+    <color name="actionbar_compat_color">#aaa</color>
+
+    <color name="application_details_light">#cccccc</color>
+
+</resources>

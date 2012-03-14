@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical"
+        >
+
+    <LinearLayout
+            android:id="@+id/actionbar_compat"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/actionbar_compat_color"
+            android:orientation="horizontal"/>
+
+    <LinearLayout
+            android:id="@+id/actionbar_search"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+        <EditText
+                android:id="@+id/actionbar_search_filter"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+        />
+        <ImageView
+                android:id="@+id/actionbar_search_close"
+                android:src="@drawable/close"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/tabbar_compat"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="gone"
+            android:orientation="horizontal"/>
+
+</LinearLayout>
