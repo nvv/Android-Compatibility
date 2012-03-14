@@ -20,7 +20,7 @@ public abstract class ActionBarHelper {
     protected Activity mActivity;
 
     /**
-     * Factory method for creating {@link com.compatibility.compatibility.ActionBarHelper} objects for a
+     * Factory method for creating {@link android.support.compatibility.ActionBarHelper} objects for a
      * given activity. Depending on which device the app is running, either a basic helper or
      * Honeycomb-specific helper will be returned.
      *
