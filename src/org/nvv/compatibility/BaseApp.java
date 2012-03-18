@@ -5,11 +5,11 @@ import android.app.Application;
 /**
  * Base application object.
  */
-public class GApp extends Application {
+public class BaseApp extends Application {
 
-    public static GApp sInstance;
+    public static BaseApp sInstance;
 
-    public GApp() {
+    public BaseApp() {
         sInstance = this;
     }
 

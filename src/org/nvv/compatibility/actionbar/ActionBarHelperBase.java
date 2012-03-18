@@ -2,7 +2,7 @@ package org.nvv.compatibility.actionbar;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import org.nvv.compatibility.GApp;
+import org.nvv.compatibility.BaseApp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.XmlResourceParser;
@@ -221,7 +221,7 @@ public class ActionBarHelperBase extends ActionBarHelper {
 
     @Override
     public void createSearchMenuItem(final SearchViewQueryListener listener) {
-        MenuItem item = mMenu.add(GApp.sInstance.getResources().getString(R.string.menu_search));
+        MenuItem item = mMenu.add(BaseApp.sInstance.getResources().getString(R.string.menu_search));
         item.setIcon(android.R.drawable.ic_menu_search);
 
         View actionButton = addActionItemCompatFromMenuItem(item);
@@ -238,7 +238,7 @@ public class ActionBarHelperBase extends ActionBarHelper {
 
                 actionBar.setVisibility(View.GONE);
                 searchBar.setVisibility(View.VISIBLE);
-                Animation animation = AnimationUtils.loadAnimation(GApp.sInstance.getApplicationContext(),
+                Animation animation = AnimationUtils.loadAnimation(BaseApp.sInstance.getApplicationContext(),
                         R.anim.slide_left_in);
                 animation.reset();
                 searchBar.startAnimation(animation);
@@ -265,7 +265,7 @@ public class ActionBarHelperBase extends ActionBarHelper {
                         searchBar.setVisibility(View.GONE);
 
                         actionBar.setVisibility(View.VISIBLE);
-                        Animation animation = AnimationUtils.loadAnimation(GApp.sInstance.getApplicationContext(),
+                        Animation animation = AnimationUtils.loadAnimation(BaseApp.sInstance.getApplicationContext(),
                                 R.anim.slide_right_in);
                         animation.reset();
                         actionBar.startAnimation(animation);
@@ -436,7 +436,7 @@ public class ActionBarHelperBase extends ActionBarHelper {
 
                             try {
                                 title = parser.getAttributeValue(MENU_RES_NAMESPACE, MENU_ATTR_TITLE);
-                                title = GApp.sInstance.getApplicationContext().getString(Integer.parseInt(title.substring(1)));
+                                title = BaseApp.sInstance.getApplicationContext().getString(Integer.parseInt(title.substring(1)));
                             } catch (Exception ignore) {}
 
                             icon = parser.getAttributeResourceValue(MENU_RES_NAMESPACE,

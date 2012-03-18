@@ -2,7 +2,7 @@ package org.nvv.compatibility.actionbar;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import org.nvv.compatibility.GApp;
+import org.nvv.compatibility.BaseApp;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -78,7 +78,7 @@ public class ActionBarHelperHoneycomb extends ActionBarHelper {
 
     @Override
     public void createSearchMenuItem(final SearchViewQueryListener listener) {
-        MenuItem item = mOptionsMenu.add(GApp.sInstance.getResources().getString(R.string.menu_search));
+        MenuItem item = mOptionsMenu.add(BaseApp.sInstance.getResources().getString(R.string.menu_search));
         item.setIcon(android.R.drawable.ic_menu_search);
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         SearchView sv = new SearchView(mActivity);
