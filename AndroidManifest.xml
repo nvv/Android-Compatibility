@@ -3,7 +3,7 @@
       package="android.support"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:label="Compat" android:icon="@drawable/ic_launcher" android:name="android.support.GApp">
+    <application android:label="Compat" android:icon="@drawable/ic_launcher" android:name="org.nvv.compatibility.GApp">
 
     </application>
 </manifest>

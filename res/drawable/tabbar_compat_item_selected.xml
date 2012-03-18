@@ -11,7 +11,7 @@
     -->
     <item android:bottom="-20dp">
         <shape android:shape="line">
-            <stroke android:width="3dip" android:color="#1E90FF"/>
+            <stroke android:width="4dip" android:color="#1E90FF"/>
             <padding android:left="2dp" android:right="2dp" android:top="2dp"/>
         </shape>
     </item>

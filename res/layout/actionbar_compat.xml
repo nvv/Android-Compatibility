@@ -36,9 +36,10 @@
 
     <LinearLayout
             android:id="@+id/tabbar_compat"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:visibility="gone"
+            android:background="@drawable/tabbar_underline"
             android:orientation="horizontal"/>
 
 </LinearLayout>

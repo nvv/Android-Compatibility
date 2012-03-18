@@ -1,8 +1,8 @@
-package android.support.fragments;
+package org.nvv.compatibility.fragments;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.support.GApp;
+import org.nvv.compatibility.GApp;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 

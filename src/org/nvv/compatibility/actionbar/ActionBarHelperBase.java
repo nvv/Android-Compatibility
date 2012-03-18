@@ -1,8 +1,8 @@
-package android.support.compatibility;
+package org.nvv.compatibility.actionbar;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.support.GApp;
+import org.nvv.compatibility.GApp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.XmlResourceParser;

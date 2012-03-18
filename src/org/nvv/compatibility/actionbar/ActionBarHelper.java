@@ -1,4 +1,4 @@
-package android.support.compatibility;
+package org.nvv.compatibility.actionbar;
 
 import android.app.Activity;
 import android.os.Build;
@@ -12,15 +12,15 @@ import android.view.MenuInflater;
  * class provides functionality useful for both phones and tablets, and does not require any Android
  * 3.0-specific features, although it uses them if available.
  *
- * Two implementations of this class are {@link android.support.compatibility.ActionBarHelperBase} for a pre-Honeycomb version of
- * the action bar, and {@link android.support.compatibility.ActionBarHelperHoneycomb}, which uses the built-in ActionBar features
+ * Two implementations of this class are {@link ActionBarHelperBase} for a pre-Honeycomb version of
+ * the action bar, and {@link ActionBarHelperHoneycomb}, which uses the built-in ActionBar features
  * in Android 3.0 and later.
  */
 public abstract class ActionBarHelper {
     protected Activity mActivity;
 
     /**
-     * Factory method for creating {@link android.support.compatibility.ActionBarHelper} objects for a
+     * Factory method for creating {@link ActionBarHelper} objects for a
      * given activity. Depending on which device the app is running, either a basic helper or
      * Honeycomb-specific helper will be returned.
      *
@@ -89,7 +89,7 @@ public abstract class ActionBarHelper {
 
     /**
      * Returns a {@link android.view.MenuInflater} for use when inflating menus. The implementation of this
-     * method in {@link android.support.compatibility.ActionBarHelperBase} returns a wrapped menu mInflater that can read
+     * method in {@link ActionBarHelperBase} returns a wrapped menu mInflater that can read
      * action bar metadata from a menu resource pre-Honeycomb.
      */
     public MenuInflater getMenuInflater(MenuInflater superMenuInflater) {

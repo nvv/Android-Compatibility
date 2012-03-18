@@ -1,8 +1,8 @@
-package android.support.compatibility;
+package org.nvv.compatibility.actionbar;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.support.GApp;
+import org.nvv.compatibility.GApp;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
 import android.support.R;
-import android.support.fragments.TabListener;
+import org.nvv.compatibility.fragments.TabListener;
 
 /**
  * An extension of {@link ActionBarHelper} that provides Android 3.0-specific functionality for
@@ -99,7 +99,7 @@ public class ActionBarHelperHoneycomb extends ActionBarHelper {
 
     /**
      * Returns a {@link android.content.Context} suitable for inflating layouts for the action bar. The
-     * implementation for this method in {@link android.support.compatibility.ActionBarHelperICS} asks the action bar for a
+     * implementation for this method in {@link ActionBarHelperICS} asks the action bar for a
      * themed context.
      */
     protected Context getActionBarThemedContext() {
