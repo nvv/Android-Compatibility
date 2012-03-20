@@ -1,7 +1,7 @@
 Android-Compatibility
 =============
 
-'''Android-Compatibility''' is a library project used to provide single interface for all android devices (2.x, 3.x, 4.x) to use some features (like action bar) which are not available in lower android version. 
+**Android-Compatibility** is a library project used to provide single interface for all android devices (2.x, 3.x, 4.x) to use some features (like action bar) which are not available in lower android version. 
 
 Primary component in Android-Compatibility - action bar, but some other features will be implemented later.
 
