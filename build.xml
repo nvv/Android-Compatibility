@@ -1,85 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="CompatibilityPackage" default="help">
+<project name="CompatibilityPackage" default="release" basedir=".">
 
-    <!-- The local.properties file is created and updated by the 'android' tool.
-         It contains the path to the SDK. It should *NOT* be checked into
-         Version Control Systems. -->
     <property file="local.properties" />
+    <property file="project.properties" />
 
-    <!-- The ant.properties file can be created by you. It is only edited by the
-         'android' tool to add properties to it.
-         This is the place to change some Ant specific build properties.
-         Here are some properties you may want to change/update:
-
-         source.dir
-             The name of the source directory. Default is 'src'.
-         out.dir
-             The name of the output directory. Default is 'bin'.
-
-         For other overridable properties, look at the beginning of the rules
-         files in the SDK, at tools/ant/build.xml
-
-         Properties related to the SDK location or the project target should
-         be updated using the 'android' tool with the 'update' action.
-
-         This file is an integral part of the build system for your
-         application and should be checked into Version Control Systems.
-
-         -->
-    <property file="ant.properties" />
-
-    <!-- The project.properties file is created and updated by the 'android'
-         tool, as well as ADT.
-
-         This contains project specific properties such as project target, and library
-         dependencies. Lower level build properties are stored in ant.properties
-         (or in .classpath for Eclipse projects).
-
-         This file is an integral part of the build system for your
-         application and should be checked into Version Control Systems. -->
-    <loadproperties srcFile="project.properties" />
-
-    <!-- quick check on sdk.dir -->
-    <fail
-            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through an env var"
-            unless="sdk.dir"
-    />
+    <property name="package_name" value="CompatibilityPackage"/>
+    <property name="extension" value="apk"/>
 
 
-<!-- extension targets. Uncomment the ones where you want to do custom work
-     in between standard targets -->
-<!--
-    <target name="-pre-build">
-    </target>
-    <target name="-pre-compile">
+    <path id="android.antlibs">
+        <pathelement path="${sdk.dir}/tools/lib/anttasks.jar"/>
+        <pathelement path="${sdk.dir}/tools/lib/sdklib.jar"/>
+        <pathelement path="${sdk.dir}/tools/lib/androidprefs.jar"/>
+    </path>
+
+    <target name="package-release" depends="release" description="package the application without signing it">
+        <apkbuilder
+                outfolder="."
+                resourcefile="${package_name}.ap_"
+                apkfilepath="${package_name}-unsigned.${extension}"
+                debugsigning="false"
+                verbose="${verbose}"
+                hascode="true">
+            <dex path="bin/classes.dex"/>
+            <sourcefolder path="src"/>
+            <jarfolder path="libs"/>
+            <nativefolder path="libs"/>
+        </apkbuilder>
     </target>
 
-    /* This is typically used for code obfuscation.
-       Compiled code location: ${out.classes.absolute.dir}
-       If this is not done in place, override ${out.dex.input.absolute.dir} */
-    <target name="-post-compile">
+    <target name="sign-release" depends="package-release" description="build and sign the application">
+
+        <!-- Signs the APK -->
+        <echo>Signing final apk...</echo>
+        <signjar
+                jar="${package_name}-unsigned.apk"
+                signedjar="${package_name}-unaligned.apk"
+                keystore="${key.store}"
+                storepass="${key.store.password}"
+                alias="${key.alias}"
+                keypass="${key.alias.password}"
+                verbose="${verbose}"/>
+
+        <!-- Zip aligns the APK -->
+        <echo>Running zip align on final apk...</echo>
+        <exec executable="${sdk.dir}/tools/zipalign" failonerror="true">
+            <arg line="-v"/>
+            <arg value="-f"/>
+            <arg value="4"/>
+            <arg path="${package_name}-unaligned.apk"/>
+            <arg path="${package_name}.apk"/>
+        </exec>
+        <delete file="${package_name}-unsigned.apk"/>
+        <delete file="${package_name}-unsigned.apk.d"/>
+        <delete file="${package_name}-unaligned.apk"/>
+        <echo>Release Package: ${package_name}.apk</echo>
     </target>
--->
 
-    <!-- Import the actual build file.
+    <target name="prepare_source">
+        <replaceregexp file="AndroidManifest.xml" match="debuggable=&#34;true" replace="debuggable=&#34;false"/>
+    </target>
 
-         To customize existing targets, there are two options:
-         - Customize only one target:
-             - copy/paste the target into this file, *before* the
-               <import> task.
-             - customize it to your needs.
-         - Customize the whole content of build.xml
-             - copy/paste the content of the rules files (minus the top node)
-               into this file, replacing the <import> task.
-             - customize to your needs.
-
-         ***********************
-         ****** IMPORTANT ******
-         ***********************
-         In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
-         in order to avoid having your file be overridden by tools such as "android update project"
-    -->
-    <!-- version-tag: 1 -->
     <import file="${sdk.dir}/tools/ant/build.xml" />
 
 </project>
