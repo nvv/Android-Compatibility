@@ -43,6 +43,14 @@ public class ActionBarHelperBase extends ActionBarHelper {
     protected int mCurrentTab;
     protected boolean mTabsSupport;
 
+    /**
+     * This parameter is used to layout tab bar headers in second line of action bar
+     * (it's actual for smartphones with low screen dimension).
+     * default value is <code>true</code>.
+     * Need to be configured manually.
+     */
+    protected boolean mDualLineActionBar = true;
+
     protected ActionBarHelperBase(Activity activity) {
         super(activity);
     }
@@ -288,6 +296,8 @@ public class ActionBarHelperBase extends ActionBarHelper {
     /**
      * Returns the {@link android.view.ViewGroup} for the tab bar on phones (compatibility action
      * bar). Can return null, and will return null on Honeycomb.
+     *
+     * @return tab bar holder. Layout for phones; for Honeycomb (or higher) returns null.
      */
     private ViewGroup getTabBarCompat() {
         return (ViewGroup) mActivity.findViewById(R.id.tabbar_compat);
